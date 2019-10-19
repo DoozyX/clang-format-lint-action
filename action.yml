@@ -1,5 +1,5 @@
 name: 'clang-format lint'
-author: 'DoozyX'
+author: 'Slobodan Kletnikov (DoozyX)'
 description: 'Github Action that check if code is formatted correctly using clang-format'
 branding:
   icon: 'align-left'  
