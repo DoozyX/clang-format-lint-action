@@ -1,4 +1,4 @@
-FROM unibeautify/clang-format:latest as clang-format-bin
+FROM doozy/clang-format:latest as clang-format-bin
 FROM python:3-alpine
 
 COPY --from=clang-format-bin /usr/bin/clang-format /usr/bin/
