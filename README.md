@@ -6,15 +6,21 @@ This action check if the source code matches the .clang-format file.
 
 ### `source`
 
-**Required** Where the soruce files are located.
+Where the soruce files are located.
+Default: '.' (current folder)
+Example: './src'
 
 ### `exclude`
 
 What folder should be exlcuded from format checking.
+Default: 'none'
+Example: './third_party'
 
 ### `extensions`
 
 What extensions should be used from format checking.
+Default: 'c,h,C,H,cpp,hpp,cc,hh,c++,h++,cxx,hxx'
+Example: 'cpp,h'
 
 ## Example usage
 
@@ -32,6 +38,6 @@ jobs:
     - uses: ./.github/actions/test-clang-format
       with:
         source: '.'
-        exclude: './src'
-        extensions: 'cpp'
+        exclude: './third_party'
+        extensions: 'h,cpp'
 ```
