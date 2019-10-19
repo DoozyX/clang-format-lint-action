@@ -1,6 +1,6 @@
 # clang-format lint action
 
-This action check if the source code matches the .clang-format file.
+This action checks if the source code matches the .clang-format file.
 
 ## Inputs
 
