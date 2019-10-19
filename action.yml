@@ -12,7 +12,7 @@ inputs:
   exclude:
     description: 'Folder to exclude from formatting check'
     required: false
-    default: ''
+    default: 'none'
   extensions:
     description: 'List of extensions to check'
     required: false
