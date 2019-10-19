@@ -1,0 +1,26 @@
+name: 'clang-format lint'
+author: 'DoozyX'
+description: 'Github Action that check if code is formatted correctly using clang-format'
+branding:
+  icon: 'align-left'  
+  color: 'green'
+inputs:
+  source:
+    description: 'Source folder to check formatting'
+    required: false
+    default: '.'
+  exclude:
+    description: 'Folder to exclude from formatting check'
+    required: false
+    default: ''
+  extensions:
+    description: 'List of extensions to check'
+    required: false
+    default: 'c,h,C,H,cpp,hpp,cc,hh,c++,h++,cxx,hxx'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.source }}
+    - ${{ inputs.exclude }}
+    - ${{ inputs.extensions }}
