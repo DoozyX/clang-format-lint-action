@@ -6,19 +6,19 @@ This action checks if the source code matches the .clang-format file.
 
 ### `source`
 
-Where the soruce files are located.\
+Where the source files are located.\
 Default: '.' (current folder)\
 Example: './src'
 
 ### `exclude`
 
-What folder should be exlcuded from format checking.\
+What folder should be excluded from format checking.\
 Default: 'none'\
 Example: './third_party'
 
 ### `extensions`
 
-What extensions should be used from format checking.\
+What filename extensions should be used for format checking.\
 Default: 'c,h,C,H,cpp,hpp,cc,hh,c++,h++,cxx,hxx'\
 Example: 'cpp,h'
 
