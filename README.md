@@ -35,7 +35,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - uses: DoozyX/clang-format-lint-action@v0.3.1
+    - uses: DoozyX/clang-format-lint-action@v0.4.1
       with:
         source: '.'
         exclude: './third_party'
