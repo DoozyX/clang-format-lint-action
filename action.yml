@@ -19,7 +19,7 @@ inputs:
     default: 'c,h,C,H,cpp,hpp,cc,hh,c++,h++,cxx,hxx'
 runs:
   using: 'docker'
-  image: 'docker://doozy/clang-format-lint:latest'
+  image: 'docker://doozy/clang-format-lint:0.4'
   args:
     - ${{ inputs.source }}
     - ${{ inputs.exclude }}
