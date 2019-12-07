@@ -22,6 +22,13 @@ What filename extensions should be used for format checking.\
 Default: 'c,h,C,H,cpp,hpp,cc,hh,c++,h++,cxx,hxx'\
 Example: 'cpp,h'
 
+### `clangFormatVersion`
+
+What clang-format version should be used.\
+Available version are from 5 to 9.\
+Default: 9\
+Example: 9
+
 ## Example usage
 
 ```yml
@@ -35,9 +42,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - uses: DoozyX/clang-format-lint-action@v0.4.1
+    - uses: DoozyX/clang-format-lint-action@v0.5
       with:
         source: '.'
         exclude: './third_party'
         extensions: 'h,cpp'
+        clangFormatVersion: 9
 ```
