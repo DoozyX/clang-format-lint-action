@@ -27,7 +27,7 @@ inputs:
     default: ''
 runs:
   using: 'docker'
-  image: 'docker://doozy/clang-format-lint:0.5'
+  image: 'Dockerfile'
   args:
     - ${{ inputs.source }}
     - ${{ inputs.exclude }}
