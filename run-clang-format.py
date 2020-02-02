@@ -246,7 +246,7 @@ def main():
         '--cli-args',
         help=('CLI arguments to be passed to clang format (default: None).'
               'All args should be separated by spaces (we don\'t support quotes yet)'),
-        default='')
+        default='none')
     parser.add_argument(
         '--extensions',
         help='comma separated list of file extensions (default: {})'.format(
