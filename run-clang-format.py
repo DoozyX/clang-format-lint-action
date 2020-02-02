@@ -285,11 +285,10 @@ def main():
         ' from recursive search')
 
     args = parser.parse_args()
-    if args.cli_args == '':
+    if args.cli_args == 'none':
         args.cli_args = []
     else:
         args.cli_args = args.cli_args.split(' ')
-    print("cli args:", args.cli_args)
 
     # use default signal handling, like diff return SIGINT value on ^C
     # https://bugs.python.org/issue14229#msg156446
