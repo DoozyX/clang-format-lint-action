@@ -130,7 +130,7 @@ def run_clang_format_diff(args, file):
             original = f.readlines()
     except IOError as exc:
         raise DiffError(str(exc))
-    invocation = [args.clang_format_executable, file]
+    invocation = [args.clang_format_executable, *args.cli_args, file]
 
     # Use of utf-8 to decode the process output.
     #
@@ -243,6 +243,11 @@ def main():
         help='path to the clang-format executable',
         default='clang-format')
     parser.add_argument(
+        '--cli-args',
+        help=('CLI arguments to be passed to clang format (default: None).'
+              'All args should be separated by spaces (we don\'t support quotes yet)'),
+        default='')
+    parser.add_argument(
         '--extensions',
         help='comma separated list of file extensions (default: {})'.format(
             DEFAULT_EXTENSIONS),
@@ -280,6 +285,10 @@ def main():
         ' from recursive search')
 
     args = parser.parse_args()
+    if args.cli_args == '':
+        args.cli_args = []
+    else:
+        args.cli_args = args.cli_args.split(' ')
 
     # use default signal handling, like diff return SIGINT value on ^C
     # https://bugs.python.org/issue14229#msg156446
