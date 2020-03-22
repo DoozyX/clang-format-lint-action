@@ -16,6 +16,14 @@ What folder should be excluded from format checking.\
 Default: 'none'\
 Example: './third_party'
 
+Multiple exclude rules can be put in a `.clang-format-ignore` file, which also supports comments.\
+Example:
+```
+# ignore third_party code from clang-format checks
+src/third_party/*
+src/ignored/*
+```
+
 ### `extensions`
 
 What filename extensions should be used for format checking.\
