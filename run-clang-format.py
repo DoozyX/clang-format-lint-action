@@ -335,7 +335,11 @@ def main():
         extensions=args.extensions.split(','))
 
     if not files:
-        return
+        print_trouble(parser.prog, 'No files found', use_colors=colored_stderr)
+        return ExitStatus.TROUBLE
+
+    if not args.quiet:
+      print('Processing %s files: %s' % (len(files), ', '.join(files)))
 
     njobs = args.j
     if njobs == 0:
