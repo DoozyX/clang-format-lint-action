@@ -27,4 +27,11 @@ inputs:
     default: 'file'
 runs:
   using: 'docker'
-  image: 'docker://doozy/clang-format-lint:0.5'
+  image: 'Dockerfile'
+  args:
+    - --clang-format-executable /clang-format/clang-format${{ inputs.clangFormatVersion }}
+    - -r
+    - --style ${{ inputs.style }}
+    - --extensions ${{ inputs.extensions }}
+    - --exclude ${{ inputs.exclude }}
+    - ${{ inputs.source }}
