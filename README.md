@@ -37,6 +37,13 @@ Available version are from 5 to 9.\
 Default: 9\
 Example: 9
 
+### `style`
+
+Style to use.\
+Results in the appropriate --style parameter.\
+Default: file\
+Example: chromium
+
 ## Example usage
 
 ```yml
@@ -53,7 +60,8 @@ jobs:
     - uses: DoozyX/clang-format-lint-action@v0.5
       with:
         source: '.'
-        exclude: './third_party'
+        exclude: './third_party ./external'
         extensions: 'h,cpp'
         clangFormatVersion: 9
+        style: chromium
 ```
