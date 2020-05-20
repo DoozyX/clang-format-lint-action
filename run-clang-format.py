@@ -131,6 +131,8 @@ def run_clang_format_diff(args, file):
     except IOError as exc:
         raise DiffError(str(exc))
     invocation = [args.clang_format_executable, file]
+    if args.style:
+      invocation.append('-style=' + args.style)
 
     # Use of utf-8 to decode the process output.
     #
@@ -278,6 +280,10 @@ def main():
         default=[],
         help='exclude paths matching the given glob-like pattern(s)'
         ' from recursive search')
+    parser.add_argument(
+        '--style',
+        help='Formatting style to use (default: file)',
+        default='file')
 
     args = parser.parse_args()
 
@@ -329,7 +335,11 @@ def main():
         extensions=args.extensions.split(','))
 
     if not files:
-        return
+        print_trouble(parser.prog, 'No files found', use_colors=colored_stderr)
+        return ExitStatus.TROUBLE
+
+    if not args.quiet:
+      print('Processing %s files: %s' % (len(files), ', '.join(files)))
 
     njobs = args.j
     if njobs == 0:

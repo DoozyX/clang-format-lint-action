@@ -21,11 +21,17 @@ inputs:
     description: 'Version of clang-format'
     required: false
     default: '9'
+  style:
+    description: 'Formatting style to use'
+    required: false
+    default: 'file'
 runs:
   using: 'docker'
-  image: 'docker://doozy/clang-format-lint:0.5'
+  image: 'Dockerfile'
   args:
+    - --clang-format-executable /clang-format/clang-format${{ inputs.clangFormatVersion }}
+    - -r
+    - --style ${{ inputs.style }}
+    - --extensions ${{ inputs.extensions }}
+    - --exclude ${{ inputs.exclude }}
     - ${{ inputs.source }}
-    - ${{ inputs.exclude }}
-    - ${{ inputs.extensions }}
-    - ${{ inputs.clangFormatVersion }}
