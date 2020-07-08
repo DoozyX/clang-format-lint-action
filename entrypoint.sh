@@ -2,4 +2,4 @@
 
 cd "$GITHUB_WORKSPACE"
 
-/run-clang-format.py $*
+/run-clang-format.py "$@"
