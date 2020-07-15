@@ -29,9 +29,13 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - --clang-format-executable /clang-format/clang-format${{ inputs.clangFormatVersion }}
+    - --clang-format-executable
+    - /clang-format/clang-format${{ inputs.clangFormatVersion }}
     - -r
-    - --style ${{ inputs.style }}
-    - --extensions ${{ inputs.extensions }}
-    - --exclude ${{ inputs.exclude }}
+    - --style
+    - ${{ inputs.style }}
+    - --extensions
+    - ${{ inputs.extensions }}
+    - --exclude
+    - ${{ inputs.exclude }}
     - ${{ inputs.source }}
