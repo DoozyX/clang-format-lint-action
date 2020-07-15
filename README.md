@@ -65,3 +65,18 @@ jobs:
         clangFormatVersion: 9
         style: chromium
 ```
+
+## Run locally
+
+Install Docker and then run:
+
+```bash
+docker build -t clang-format-lint github.com/DoozyX/clang-format-lint-action
+```
+
+When the image is built, run the linting:
+
+```bash
+docker run -it --rm --workdir /src -v $(pwd):/src clang-format-lint \
+    --clang-format-executable /clang-format/clang-format9 -r --exclude .git *.h *.c *.hpp *.cpp
+```
