@@ -237,6 +237,14 @@ def print_trouble(prog, message, use_colors):
     print("{}: {} {}".format(prog, error_text, message), file=sys.stderr)
 
 
+def split_list_arg(arg):
+    """
+    If arg is a list containing a single argument it is split into multiple elements.
+    Otherwise it is returned unchanged
+    Workaround for GHA not allowing list arguments
+    """
+    return arg[0].split() if len(arg) == 1 else arg
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -326,10 +334,10 @@ def main():
     retcode = ExitStatus.SUCCESS
 
     excludes = excludes_from_file(DEFAULT_CLANG_FORMAT_IGNORE)
-    excludes.extend(args.exclude)
+    excludes.extend(split_list_arg(args.exclude))
 
     files = list_files(
-        args.files,
+        split_list_arg(args.files),
         recursive=args.recursive,
         exclude=excludes,
         extensions=args.extensions.split(','))
