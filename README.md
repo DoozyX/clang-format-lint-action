@@ -8,15 +8,15 @@ This action checks if the source code matches the .clang-format file.
 
 Where the source files are located.\
 Default: '.' (current folder)\
-Example: './src'
+Example: './src' or 'src test examples' for multiple.
 
 ### `exclude`
 
 What folder should be excluded from format checking.\
 Default: 'none'\
-Example: './third_party'
+Example: './third_party' or 'third_party exclude' for multiple.
 
-Multiple exclude rules can be put in a `.clang-format-ignore` file, which also supports comments.\
+Multiple exclude rules can also be put in a `.clang-format-ignore` file, which also supports comments.\
 Example:
 ```
 # ignore third_party code from clang-format checks
@@ -57,7 +57,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: DoozyX/clang-format-lint-action@v0.5
+    - uses: DoozyX/clang-format-lint-action@v0.8
       with:
         source: '.'
         exclude: './third_party ./external'
