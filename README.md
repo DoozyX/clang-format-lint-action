@@ -33,9 +33,9 @@ Example: 'cpp,h'
 ### `clangFormatVersion`
 
 What clang-format version should be used.\
-Available version are from 5 to 10.\
+Available version are from 5 to 11.\
 Default: 9\
-Example: 9
+Example: 11
 
 ### `style`
 
@@ -62,7 +62,7 @@ jobs:
         source: '.'
         exclude: './third_party ./external'
         extensions: 'h,cpp'
-        clangFormatVersion: 9
+        clangFormatVersion: 11
         style: chromium
 ```
 
