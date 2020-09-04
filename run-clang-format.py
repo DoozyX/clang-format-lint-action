@@ -132,7 +132,9 @@ def run_clang_format_diff(args, file):
         raise DiffError(str(exc))
     invocation = [args.clang_format_executable, file]
     if args.style:
-      invocation.append('-style=' + args.style)
+        invocation.append('-style=' + args.style)
+    if args.inplace:
+        invocation.append('-i')
 
     # Use of utf-8 to decode the process output.
     #
@@ -292,6 +294,12 @@ def main():
         '--style',
         help='Formatting style to use (default: file)',
         default='file')
+    parser.add_argument(
+        '-i',
+        '--inplace',
+        type=bool,
+        default=False,
+        help='Just fix files (`clang-format -i`) instead of returning a diff')
 
     args = parser.parse_args()
 
@@ -386,7 +394,7 @@ def main():
             sys.stderr.writelines(errs)
             if outs == []:
                 continue
-            if not args.quiet:
+            if not args.quiet and not args.inplace:
                 print_diff(outs, use_color=colored_stdout)
             if retcode == ExitStatus.SUCCESS:
                 retcode = ExitStatus.DIFF
