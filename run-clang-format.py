@@ -13,9 +13,9 @@ from __future__ import print_function, unicode_literals
 import argparse
 import codecs
 import difflib
+import errno
 import fnmatch
 import io
-import errno
 import multiprocessing
 import os
 import signal
@@ -40,6 +40,7 @@ class ExitStatus:
     DIFF = 1
     TROUBLE = 2
 
+
 def excludes_from_file(ignore_file):
     excludes = []
     try:
@@ -56,7 +57,8 @@ def excludes_from_file(ignore_file):
     except EnvironmentError as e:
         if e.errno != errno.ENOENT:
             raise
-    return excludes;
+    return excludes
+
 
 def list_files(files, recursive=False, extensions=None, exclude=None):
     if extensions is None:
@@ -247,6 +249,7 @@ def split_list_arg(arg):
     """
     return arg[0].split() if len(arg) == 1 else arg
 
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -394,10 +397,12 @@ def main():
             sys.stderr.writelines(errs)
             if outs == []:
                 continue
-            if not args.quiet and not args.inplace:
-                print_diff(outs, use_color=colored_stdout)
-            if retcode == ExitStatus.SUCCESS:
-                retcode = ExitStatus.DIFF
+            if not args.inplace:
+                if not args.quiet:
+                    print_diff(outs, use_color=colored_stdout)
+                if retcode == ExitStatus.SUCCESS:
+                    retcode = ExitStatus.DIFF
+
     return retcode
 
 
