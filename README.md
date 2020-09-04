@@ -44,6 +44,41 @@ Results in the appropriate --style parameter.\
 Default: file\
 Example: chromium
 
+### `inplace`
+
+Whether to change the files on the disk instead of writing to disk.\
+This is the same as `clang-format -i`\
+Default: False\
+
+You probably want to pair this with a GitHub action (such as [`EndBug/add-and-commit`](https://github.com/EndBug/add-and-commit)) to commit the changed files. For example:
+
+```yml
+name: Run clang-format Linter
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: DoozyX/clang-format-lint-action@0.9
+      with:
+        source: '.'
+        exclude: './lib'
+        extensions: 'h,cpp,c'
+        clangFormatVersion: 11
+        inplace: True
+    - uses: EndBug/add-and-commit@v4
+      with:
+        author_name: Clang Robot
+        author_email: robot@example.com
+        message: 'Committing clang-format changes'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
 ## Example usage
 
 ```yml
