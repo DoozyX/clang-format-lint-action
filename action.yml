@@ -25,6 +25,10 @@ inputs:
     description: 'Formatting style to use'
     required: false
     default: 'file'
+  inplace:
+    description: 'Just fix files (`clang-format -i`) instead of returning a diff'
+    required: false
+    default: False
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -34,6 +38,8 @@ runs:
     - -r
     - --style
     - ${{ inputs.style }}
+    - --inplace
+    - ${{ inputs.inplace }}
     - --extensions
     - ${{ inputs.extensions }}
     - --exclude
