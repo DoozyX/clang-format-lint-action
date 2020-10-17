@@ -63,7 +63,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: DoozyX/clang-format-lint-action@0.10
+    - uses: DoozyX/clang-format-lint-action@v0.10
       with:
         source: '.'
         exclude: './lib'
@@ -113,5 +113,5 @@ When the image is built, run the linting:
 
 ```bash
 docker run -it --rm --workdir /src -v $(pwd):/src clang-format-lint \
-    --clang-format-executable /clang-format/clang-format9 -r --exclude .git *.h *.c *.hpp *.cpp
+    --clang-format-executable /clang-format/clang-format9 -r --exclude .git .
 ```
