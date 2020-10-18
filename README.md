@@ -63,7 +63,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: DoozyX/clang-format-lint-action@v0.10
+    - uses: DoozyX/clang-format-lint-action@v0.11
       with:
         source: '.'
         exclude: './lib'
@@ -92,7 +92,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: DoozyX/clang-format-lint-action@v0.10
+    - uses: DoozyX/clang-format-lint-action@v0.11
       with:
         source: '.'
         exclude: './third_party ./external'
