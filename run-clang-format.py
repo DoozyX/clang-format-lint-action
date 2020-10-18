@@ -22,6 +22,7 @@ import signal
 import subprocess
 import sys
 import traceback
+from distutils.util import strtobool
 
 from functools import partial
 
@@ -300,7 +301,7 @@ def main():
     parser.add_argument(
         '-i',
         '--inplace',
-        type=bool,
+        type=lambda x: bool(strtobool(x)),
         default=False,
         help='Just fix files (`clang-format -i`) instead of returning a diff')
 
