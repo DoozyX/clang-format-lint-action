@@ -33,9 +33,9 @@ Example: 'cpp,h'
 ### `clangFormatVersion`
 
 What clang-format version should be used.\
-Available version are from 5 to 11.\
+Available version are from 5 to 12.\
 Default: 9\
-Example: 11
+Example: 12
 
 ### `style`
 
@@ -63,12 +63,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: DoozyX/clang-format-lint-action@v0.11
+    - uses: DoozyX/clang-format-lint-action@v0.12
       with:
         source: '.'
         exclude: './lib'
         extensions: 'h,cpp,c'
-        clangFormatVersion: 11
+        clangFormatVersion: 12
         inplace: True
     - uses: EndBug/add-and-commit@v4
       with:
@@ -92,12 +92,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: DoozyX/clang-format-lint-action@v0.11
+    - uses: DoozyX/clang-format-lint-action@v0.12
       with:
         source: '.'
         exclude: './third_party ./external'
         extensions: 'h,cpp'
-        clangFormatVersion: 11
+        clangFormatVersion: 12
         style: chromium
 ```
 
