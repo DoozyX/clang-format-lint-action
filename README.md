@@ -33,7 +33,8 @@ Example: 'cpp,h'
 ### `clangFormatVersion`
 
 What clang-format version should be used.\
-Available version are from 5 to 12.\
+Available version are\
+5,6,7,8,9,10,11(11.0.0),11.0.0, 11.1.0, 12(12.0.1), 12.0.0, 12.0.1, 13(13.0.0), 13.0.0\
 Default: 9\
 Example: 12
 
