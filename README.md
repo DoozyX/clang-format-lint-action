@@ -20,8 +20,8 @@ Multiple exclude rules can also be put in a `.clang-format-ignore` file, which a
 Example:
 ```
 # ignore third_party code from clang-format checks
-src/third_party/*
-src/ignored/*
+./src/third_party/*
+./src/ignored/*
 ```
 
 ### `extensions`
