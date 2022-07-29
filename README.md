@@ -36,7 +36,7 @@ What clang-format version should be used.\
 Available version are\
 5,6,7,8,9,10,11(11.0.0),11.0.0, 11.1.0, 12(12.0.1), 12.0.0, 12.0.1, 13(13.0.0), 13.0.0, 14(14.0.0), 14.0.0\
 Default: 9\
-Example: 12
+Example: 14
 
 ### `style`
 
@@ -64,12 +64,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: DoozyX/clang-format-lint-action@v0.13
+    - uses: DoozyX/clang-format-lint-action@v0.14
       with:
         source: '.'
         exclude: './lib'
         extensions: 'h,cpp,c'
-        clangFormatVersion: 12
+        clangFormatVersion: 14
         inplace: True
     - uses: EndBug/add-and-commit@v4
       with:
@@ -93,12 +93,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: DoozyX/clang-format-lint-action@v0.13
+    - uses: DoozyX/clang-format-lint-action@v0.14
       with:
         source: '.'
         exclude: './third_party ./external'
         extensions: 'h,cpp'
-        clangFormatVersion: 12
+        clangFormatVersion: 14
         style: chromium
 ```
 
