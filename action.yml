@@ -36,6 +36,8 @@ runs:
     - --clang-format-executable
     - /clang-format/clang-format${{ inputs.clangFormatVersion }}
     - -r
+    - --color
+    - always
     - --style
     - ${{ inputs.style }}
     - --inplace
