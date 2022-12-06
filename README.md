@@ -71,7 +71,7 @@ jobs:
         extensions: 'h,cpp,c'
         clangFormatVersion: 14
         inplace: True
-    - uses: EndBug/add-and-commit@v4
+    - uses: EndBug/add-and-commit@v9
       with:
         author_name: Clang Robot
         author_email: robot@example.com
