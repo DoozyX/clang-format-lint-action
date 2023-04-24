@@ -64,12 +64,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: DoozyX/clang-format-lint-action@v0.14
+    - uses: DoozyX/clang-format-lint-action@v0.16.1
       with:
         source: '.'
         exclude: './lib'
         extensions: 'h,cpp,c'
-        clangFormatVersion: 14
+        clangFormatVersion: 16
         inplace: True
     - uses: EndBug/add-and-commit@v9
       with:
