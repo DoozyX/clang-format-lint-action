@@ -64,7 +64,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: DoozyX/clang-format-lint-action@v0.16.1
+    - uses: DoozyX/clang-format-lint-action@v0.16.2
       with:
         source: '.'
         exclude: './lib'
