@@ -116,3 +116,5 @@ When the image is built, run the linting:
 docker run -it --rm --workdir /src -v $(pwd):/src clang-format-lint \
     --clang-format-executable /clang-format/clang-format9 -r --exclude .git .
 ```
+
+Actions clion format binary are from https://github.com/muttleyxd/clang-tools-static-binaries
