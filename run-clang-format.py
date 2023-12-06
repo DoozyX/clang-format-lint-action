@@ -22,6 +22,7 @@ import signal
 import subprocess
 import sys
 import traceback
+import re
 from distutils.util import strtobool
 
 from functools import partial
@@ -69,6 +70,7 @@ def list_files(files, recursive=False, extensions=None, exclude=None):
 
     out = []
     for file in files:
+        file = file.replace("\\", "")
         if recursive and os.path.isdir(file):
             for dirpath, dnames, fnames in os.walk(file):
                 fpaths = [os.path.join(dirpath, fname) for fname in fnames]
@@ -248,6 +250,14 @@ def split_list_arg(arg):
     Otherwise it is returned unchanged
     Workaround for GHA not allowing list arguments
     """
+    pattern = r'(?<!\\)\s+'
+    if len(arg) == 1:
+        # split list by regex
+        paths = re.split(pattern, arg[0])
+        for path in paths:
+            # normalize paths by removing forward slashes
+            path = path.replace("\\", "")
+        return paths
     return arg[0].split() if len(arg) == 1 else arg
 
 
