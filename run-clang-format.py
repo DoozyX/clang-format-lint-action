@@ -70,7 +70,7 @@ def list_files(files, recursive=False, extensions=None, exclude=None):
 
     out = []
     for file in files:
-        file = file.replace("\\", "")
+        # file = file.replace("\\", "")
         if recursive and os.path.isdir(file):
             for dirpath, dnames, fnames in os.walk(file):
                 fpaths = [os.path.join(dirpath, fname) for fname in fnames]
@@ -254,9 +254,14 @@ def split_list_arg(arg):
     if len(arg) == 1:
         # split list by regex
         paths = re.split(pattern, arg[0])
-        for path in paths:
-            # normalize paths by removing forward slashes
-            path = path.replace("\\", "")
+        print(paths)
+        paths = [path.replace("\\","") for path in paths]
+        # for path in paths:
+        #     print(path)
+        #     # normalize paths by removing forward slashes
+        #     path = path.replace("\\", "dfgdf")
+        #     print(path)
+        print(paths)    
         return paths
     return arg[0].split() if len(arg) == 1 else arg
 
