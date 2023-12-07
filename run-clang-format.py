@@ -250,6 +250,7 @@ def normalize_paths(paths):
         "features/Test\ Features/feature.cpp" => "features/Test Features/feature.cpp"
     """
     return [path.replace("\\","") for path in paths]
+
 def split_list_arg(arg):
     """
     If arg is a list containing a single argument it is split into multiple elements.
@@ -257,19 +258,19 @@ def split_list_arg(arg):
     Workaround for GHA not allowing list arguments
     """
     pattern = r'(?<!\\)\s+'
-    if len(arg) == 1:
-        # split list by regex
-        paths = re.split(pattern, arg[0])
-        print(paths)
-        paths = normalize_paths(paths)
-        # for path in paths:
-        #     print(path)
-        #     # normalize paths by removing forward slashes
-        #     path = path.replace("\\", "dfgdf")
-        #     print(path)
-        print(paths)    
-        return paths
-    return arg[0].split() if len(arg) == 1 else arg
+    # if len(arg) == 1:
+    #     # split list by regex
+    #     paths = re.split(pattern, arg[0])
+    #     print(paths)
+    #     paths = normalize_paths(paths)
+    #     # for path in paths:
+    #     #     print(path)
+    #     #     # normalize paths by removing forward slashes
+    #     #     path = path.replace("\\", "dfgdf")
+    #     #     print(path)
+    #     print(paths)    
+    #     return paths
+    return normalize_paths(re.split(pattern, arg[0])) if len(arg) == 1 else arg
 
 
 def main():
