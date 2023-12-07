@@ -243,7 +243,13 @@ def print_trouble(prog, message, use_colors):
         error_text = bold_red(error_text)
     print("{}: {} {}".format(prog, error_text, message), file=sys.stderr)
 
-
+def normalize_paths(paths):
+    """
+    Normalizes backward slashes in each path in list of paths
+    Ex)
+        "features/Test\ Features/feature.cpp" => "features/Test Features/feature.cpp"
+    """
+    return [path.replace("\\","") for path in paths]
 def split_list_arg(arg):
     """
     If arg is a list containing a single argument it is split into multiple elements.
@@ -255,7 +261,7 @@ def split_list_arg(arg):
         # split list by regex
         paths = re.split(pattern, arg[0])
         print(paths)
-        paths = [path.replace("\\","") for path in paths]
+        paths = normalize_paths(paths)
         # for path in paths:
         #     print(path)
         #     # normalize paths by removing forward slashes
