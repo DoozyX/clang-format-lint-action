@@ -70,7 +70,6 @@ def list_files(files, recursive=False, extensions=None, exclude=None):
 
     out = []
     for file in files:
-        # file = file.replace("\\", "")
         if recursive and os.path.isdir(file):
             for dirpath, dnames, fnames in os.walk(file):
                 fpaths = [os.path.join(dirpath, fname) for fname in fnames]
@@ -259,18 +258,6 @@ def split_list_arg(arg):
     """
     # pattern matches all whitespaces except those preceded by a backslash, '\'
     pattern = r'(?<!\\)\s+'
-    # if len(arg) == 1:
-    #     # split list by regex
-    #     paths = re.split(pattern, arg[0])
-    #     print(paths)
-    #     paths = normalize_paths(paths)
-    #     # for path in paths:
-    #     #     print(path)
-    #     #     # normalize paths by removing forward slashes
-    #     #     path = path.replace("\\", "dfgdf")
-    #     #     print(path)
-    #     print(paths)    
-    #     return paths
     return normalize_paths(re.split(pattern, arg[0])) if len(arg) == 1 else arg
 
 
