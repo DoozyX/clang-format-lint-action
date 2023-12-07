@@ -257,6 +257,7 @@ def split_list_arg(arg):
     Otherwise it is returned unchanged
     Workaround for GHA not allowing list arguments
     """
+    # pattern matches all whitespaces except those preceded by a backslash, '\'
     pattern = r'(?<!\\)\s+'
     # if len(arg) == 1:
     #     # split list by regex
