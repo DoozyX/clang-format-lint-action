@@ -20,7 +20,7 @@ inputs:
   clangFormatVersion:
     description: 'Version of clang-format'
     required: false
-    default: '9'
+    default: '17'
   style:
     description: 'Formatting style to use'
     required: false
