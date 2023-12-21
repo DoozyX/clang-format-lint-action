@@ -22,6 +22,7 @@ import signal
 import subprocess
 import sys
 import traceback
+import re
 from distutils.util import strtobool
 
 from functools import partial
@@ -241,6 +242,13 @@ def print_trouble(prog, message, use_colors):
         error_text = bold_red(error_text)
     print("{}: {} {}".format(prog, error_text, message), file=sys.stderr)
 
+def normalize_paths(paths):
+    """
+    Normalizes backward slashes in each path in list of paths
+    Ex)
+        "features/Test\ Features/feature.cpp" => "features/Test Features/feature.cpp"
+    """
+    return [path.replace("\\","") for path in paths]
 
 def split_list_arg(arg):
     """
@@ -248,7 +256,9 @@ def split_list_arg(arg):
     Otherwise it is returned unchanged
     Workaround for GHA not allowing list arguments
     """
-    return arg[0].split() if len(arg) == 1 else arg
+    # pattern matches all whitespaces except those preceded by a backslash, '\'
+    pattern = r'(?<!\\)\s+'
+    return normalize_paths(re.split(pattern, arg[0])) if len(arg) == 1 else arg
 
 
 def main():
