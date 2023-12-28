@@ -93,7 +93,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: DoozyX/clang-format-lint-action@v0.14
+    - uses: DoozyX/clang-format-lint-action@v0.17
       with:
         source: '.'
         exclude: './third_party ./external'
