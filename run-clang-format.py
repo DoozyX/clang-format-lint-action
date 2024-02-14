@@ -246,7 +246,7 @@ def normalize_paths(paths):
     """
     Normalizes backward slashes in each path in list of paths
     Ex)
-        "features/Test\ Features/feature.cpp" => "features/Test Features/feature.cpp"
+        "features/Test\\ Features/feature.cpp" => "features/Test Features/feature.cpp"
     """
     return [path.replace("\\","") for path in paths]
 
