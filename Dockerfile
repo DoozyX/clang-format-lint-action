@@ -1,4 +1,4 @@
-FROM python:3.12-alpine
+FROM python:3.9-alpine
 
 COPY run-clang-format.py /run-clang-format.py
 COPY entrypoint.sh /entrypoint.sh
