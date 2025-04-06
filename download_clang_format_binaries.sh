@@ -41,7 +41,7 @@ URL="https://github.com/muttleyxd/clang-tools-static-binaries/releases/download/
 echo $URL
 
 # Download the file
-curl -L -o ./clang-format/clang-format-${VERSION} $URL
+curl -L -o ./clang-format/clang-format-${VERSION} $URL -w "Total time: %{time_total}s\n Name Lookup Time: %{time_namelookup}s\n Connect Time: %{time_connect}s\n Pre-transfer Time: %{time_pretransfer}s\n Start Transfer Time: %{time_starttransfer}s\n"
 
 # Make the downloaded file executable
 chmod +x ./clang-format/clang-format-${VERSION}
