@@ -30,20 +30,26 @@ inputs:
     required: false
     default: False
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - --clang-format-executable
-    - /clang-format/clang-format${{ inputs.clangFormatVersion }}
-    - -r
-    - --color
-    - always
-    - --style
-    - ${{ inputs.style }}
-    - --inplace
-    - ${{ inputs.inplace }}
-    - --extensions
-    - ${{ inputs.extensions }}
-    - --exclude
-    - ${{ inputs.exclude }}
-    - ${{ inputs.source }}
+  using: 'composite'
+  steps:
+    - name: Download clang-format binaries
+      run: ./download_clang_format_binaries.sh ${{ inputs.clangFormatVersion }}
+    - name: Run clang-format lint
+      using: 'docker'
+      image: 'Dockerfile'
+      with:
+        args:
+          - --clang-format-executable
+          - /clang-format/clang-format${{ inputs.clangFormatVersion }}
+          - -r
+          - --color
+          - always
+          - --style
+          - ${{ inputs.style }}
+          - --inplace
+          - ${{ inputs.inplace }}
+          - --extensions
+          - ${{ inputs.extensions }}
+          - --exclude
+          - ${{ inputs.exclude }}
+          - ${{ inputs.source }}
