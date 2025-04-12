@@ -34,8 +34,8 @@ Example: 'cpp,h'
 
 What clang-format version should be used.\
 Available version are\
-5,6,7,8,9,10,11(11.0.0),11.0.0, 11.1.0, 12(12.0.1), 12.0.0, 12.0.1, 13(13.0.0), 13.0.0, 14(14.0.0), 14.0.0, 15(15.0.2), 15.0.2, 16(16.0.3), 16.0.0, 16.0.3, 17(17.0.4), 17.0.4, 18(18.1.8), 18.1.3, 18.1.8, 19\
-Default: 18\
+5,6,7,8,9,10,11(11.0.0),11.0.0, 11.1.0, 12(12.0.1), 12.0.0, 12.0.1, 13(13.0.0), 13.0.0, 14(14.0.0), 14.0.0, 15(15.0.2), 15.0.2, 16(16.0.3), 16.0.0, 16.0.3, 17(17.0.4), 17.0.4, 18(18.1.8), 18.1.3, 18.1.8, 19, 20\
+Default: 20\
 Example: 15
 
 ### `style`
@@ -64,12 +64,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: DoozyX/clang-format-lint-action@v0.18.1
+    - uses: DoozyX/clang-format-lint-action@v0.20
       with:
         source: '.'
         exclude: './lib'
         extensions: 'h,cpp,c'
-        clangFormatVersion: 16
+        clangFormatVersion: 20
         inplace: True
     - uses: EndBug/add-and-commit@v9
       with:
@@ -93,12 +93,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: DoozyX/clang-format-lint-action@v0.18.1
+    - uses: DoozyX/clang-format-lint-action@v0.20
       with:
         source: '.'
         exclude: './third_party ./external'
         extensions: 'h,cpp'
-        clangFormatVersion: 18
+        clangFormatVersion: 20
         style: chromium
 ```
 
